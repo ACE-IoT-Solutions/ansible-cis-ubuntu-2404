@@ -682,13 +682,6 @@ cis_ubuntu2404_2_1_rule_set:
       - rpcbind
     disable: "{{ cis_ubuntu2404_rule_2_1_12 }}"
     remove: "{{ cis_ubuntu2404_rule_2_1_12_remove }}"
-  - title: SECTION2 | 2.1.13 | Ensure rsync services are not in use
-    service:
-      - rsync.service
-    apt:
-      - rsync
-    disable: "{{ cis_ubuntu2404_rule_2_1_13 }}"
-    remove: "{{ cis_ubuntu2404_rule_2_1_13_remove }}"
   - title: SECTION2 | 2.1.14 | Ensure samba file server services are not in use
     service:
       - smbd.service
