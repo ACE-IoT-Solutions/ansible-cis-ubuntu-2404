@@ -609,7 +609,7 @@
     - reg: "{{ cis_ubuntu2404_regex_base_search }}disk_full_action{{ cis_ubuntu2404_regex_base_search_equals }}"
       line: "disk_full_action = rotate"
     - reg: "{{ cis_ubuntu2404_regex_base_search }}disk_error_action{{ cis_ubuntu2404_regex_base_search_equals }}"
-      line: "disk_error_action = rotate"
+      line: "disk_error_action = syslog"
   notify: Restart auditd
   when:
     - cis_ubuntu2404_rule_6_2_2_3

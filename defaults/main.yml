@@ -571,7 +571,7 @@ cis_ubuntu2404_audit_backlog_limit: 8192
 cis_ubuntu2404_audit_max_log_file: 8
 cis_ubuntu2404_audit_max_log_file_action: keep_logs
 cis_ubuntu2404_audit_disk_full_action: rotate # halt | single
-cis_ubuntu2404_audit_disk_error_action: rotate # halt | syslog | single
+cis_ubuntu2404_audit_disk_error_action: syslog # halt | syslog | single
 cis_ubuntu2404_audit_space_left_action: rotate # email | exec | single | halt
 cis_ubuntu2404_audit_admin_space_left_action: rotate # single | halt
 # (cis_ubuntu2404_rule_6_2_4_1-4)
