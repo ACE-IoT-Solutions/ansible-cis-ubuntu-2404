@@ -1706,7 +1706,7 @@
     - server_l2
     - workstation_l2
 
-- name: "SECTION5 | 5.4.3.2 | Ensure default user shell timeout is configured"
+- name: "SECTION5 | 5.4.3.2 | Ensure root user shell timeout is configured"
   when:
     - cis_ubuntu2404_rule_5_4_3_2
   tags:
@@ -1714,7 +1714,7 @@
     - server_l1
     - workstation_l1
   block:
-    - name: "SECTION5 | 5.4.3.2 | Ensure default user shell timeout is configured | remove existing TMOUT"
+    - name: "SECTION5 | 5.4.3.2 | Ensure default user shell timeout is configured | remove existing TMOUT from global profiles"
       ansible.builtin.lineinfile:
         dest: "{{ item }}"
         regexp: '{{ cis_ubuntu2404_regex_base_search }}(readonly|export)\s+TMOUT'
@@ -1723,9 +1723,11 @@
         - /etc/bash.bashrc
         - /etc/profile
         - /etc/bashrc
-    - name: "SECTION5 | 5.4.3.2 | Ensure default user shell timeout is configured | add TMOUT line"
+        - /etc/profile.d/99-tmout.sh
+
+    - name: "SECTION5 | 5.4.3.2 | Ensure root user shell timeout is configured | add TMOUT to root's bashrc"
       ansible.builtin.lineinfile:
-        dest: /etc/profile.d/99-tmout.sh
+        dest: /root/.bashrc
         regexp: '{{ cis_ubuntu2404_regex_base_search }}readonly\s+TMOUT=\d+\s+;\s+export\s+TMOUT'
         line: "readonly TMOUT=900 ; export TMOUT"
         state: present
